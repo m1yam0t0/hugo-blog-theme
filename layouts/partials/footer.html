@@ -1,0 +1,8 @@
+<ul class="flex-row flex-space-evenly list-none no-decoration no-padding">
+  {{- range site.Params.social }}
+    <li><a href="{{ .url }}">{{ .name }}</a></li>
+  {{- end }}
+</ul>
+<p class="metadata">
+  {{ site.Copyright }}
+</p>

@@ -1,0 +1,10 @@
+<nav class="flex-row flex-space-between no-decoration">
+  <div class="header-logo">
+    <a class href="/">{{ site.Title }}</a>
+  </div>
+  <div class="header-menu">
+    {{- range site.Menus.main }}
+      <a href="{{ .URL }}">{{ .Name }}</a>
+    {{- end }}
+  </div>
+</nav>
