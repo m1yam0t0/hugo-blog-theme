@@ -13,7 +13,14 @@
 {{- end }}
 
 
-<link rel="stylesheet" href="{{ site.BaseURL }}/css/style.css" />
+<link rel="stylesheet" href="/css/style.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
+/>
 
 <link
   rel="stylesheet"
@@ -23,13 +30,6 @@
 <script>
   hljs.highlightAll();
 </script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
-/>
 
 {{- if hugo.IsProduction }}
   {{ template "_internal/google_analytics.html" . }}
