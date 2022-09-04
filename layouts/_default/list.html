@@ -20,7 +20,7 @@
           <time class="metadata" datetime="{{ .Date }}">
             {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
           </time>
-          <a href="{{ .Permalink }}">
+          <a href="{{ .Permalink | relURL }}">
             {{- .Title -}}
           </a>
           {{ .Summary }}
@@ -32,7 +32,7 @@
           <time class="metadata" datetime="{{ .Date }}">
             {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
           </time>
-          <a href="{{ .Permalink }}">
+          <a href="{{ .Permalink | relURL }}">
             {{- .Title -}}
           </a>
         </li>
