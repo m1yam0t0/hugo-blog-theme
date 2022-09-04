@@ -2,10 +2,10 @@
   <h1>{{ .Title }}</h1>
 
   <ul class="terms flex-row flex-wrap list-none">
-    {{ range .Pages }}
+    {{- range .Pages }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
       </li>
-    {{ end }}
+    {{- end }}
   </ul>
 {{ end }}

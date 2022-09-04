@@ -1,22 +1,18 @@
-{{ define "title" }}
-  {{ .Title }} &ndash;
-  {{ site.Title }}
-{{ end }}
-{{ define "main" }}
+{{- define "main" }}
   <h1>{{ .Title }}</h1>
-  {{- if not .Date.IsZero -}}
+  {{- if not .Date.IsZero }}
     <div class="metadata">
       Date:
       {{ .Date | time.Format (default "2006/01/02" site.Params.DateFormat) }}
     </div>
   {{- end }}
-  {{ if .Params.tags }}
+  {{- if .Params.tags }}
     <div class="metadata">
       Tags:
       {{- range ($.GetTerms "tags") }}
         <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
       {{- end }}
     </div>
-  {{ end }}
+  {{- end }}
   {{ .Content }}
-{{ end }}
+{{- end }}

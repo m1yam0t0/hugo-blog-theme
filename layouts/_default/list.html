@@ -1,42 +1,43 @@
-{{ define "main" }}
-  <h1>{{ site.Title }}</h1>
-
-  {{ if .IsHome }}
+{{- define "main" }}
+  {{- if .IsHome }}
+    <h1>{{ site.Title }}</h1>
     <h3>{{ site.Params.description }}</h3>
-  {{ end }}
+  {{ else }}
+    <h1>{{ .Title }}</h1>
+  {{- end }}
 
-  {{ $pages := .Pages }}
-  {{ if .IsHome }}
-    {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-  {{ end }}
-  {{ $paginator := .Paginate $pages }}
+  {{- $pages := .Pages }}
+  {{- if .IsHome }}
+    {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+  {{- end }}
+  {{- $paginator := .Paginate $pages }}
 
 
   <ol class="index list-none no-padding">
-    {{ if .IsHome }}
-      {{ range $paginator.Pages }}
+    {{- if .IsHome }}
+      {{- range $paginator.Pages }}
         <li class="flex-column">
           <time class="metadata" datetime="{{ .Date }}">
-            {{ .Date | time.Format (default "2006/01/02" site.Params.DateFormat) }}
+            {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
           </time>
           <a href="{{ .Permalink }}">
-            {{ .Title }}
+            {{- .Title -}}
           </a>
           {{ .Summary }}
         </li>
-      {{ end }}
-    {{ else }}
-      {{ range $paginator.Pages }}
+      {{- end }}
+    {{- else }}
+      {{- range $paginator.Pages }}
         <li>
           <time class="metadata" datetime="{{ .Date }}">
-            {{ .Date | time.Format (default "2006/01/02" site.Params.DateFormat) }}
+            {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
           </time>
           <a href="{{ .Permalink }}">
-            {{ .Title }}
+            {{- .Title -}}
           </a>
         </li>
-      {{ end }}
-    {{ end }}
+      {{- end }}
+    {{- end }}
   </ol>
   {{ template "_internal/pagination.html" . }}
-{{ end }}
+{{- end }}

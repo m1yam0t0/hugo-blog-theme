@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html
+  {{ with site.LanguageCode | default site.Language.Lang }}
+    lang="{{ . }}"
+  {{ end }}
+>
   <head>
     <title>
-      {{- block "title" . }}
+      {{- if .IsHome }}
+        {{ site.Title }}
+      {{- else }}
+        {{ .Title }} &ndash;
         {{ site.Title }}
       {{- end }}
     </title>
     {{ partial "head" . }}
   </head>
   <body>
-    <header class="header">
-      {{ partial "header" . }}
-    </header>
+    {{ partial "header" . }}
     <main class="main">
-      {{ block "main" . }}
-      {{ end }}
+      {{- block "main" . }}
+      {{- end }}
     </main>
-    <footer class="footer">
-      {{ partial "footer" . }}
-    </footer>
+    {{ partial "footer" . }}
   </body>
 </html>

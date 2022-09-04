@@ -5,14 +5,15 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
-{{- if not site.IsServer }}
+<meta name="author" content="{{ site.Author.name }}" />
+{{- if hugo.IsProduction }}
   <meta name="robots" content="index, follow" />
 {{- else }}
   <meta name="robots" content="noindex, nofollow" />
 {{- end }}
 
 
-<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css" />
+<link rel="stylesheet" href="{{ site.BaseURL }}/css/style.css" />
 
 <link
   rel="stylesheet"
@@ -30,6 +31,6 @@
   href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
 />
 
-{{- if not site.IsServer }}
+{{- if hugo.IsProduction }}
   {{ template "_internal/google_analytics.html" . }}
 {{- end }}
