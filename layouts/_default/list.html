@@ -1,42 +1,34 @@
 {{- define "main" }}
+  {{- $title := .Title -}}
+  {{- $pages := .Pages -}}
+  {{- $flex := "" -}}
+  {{- $summary := false -}}
   {{- if .IsHome }}
-    <h1>{{ site.Title }}</h1>
-    <h3>{{ site.Params.description }}</h3>
-  {{ else }}
-    <h1>{{ .Title }}</h1>
-  {{- end }}
-
-  {{- $pages := .Pages }}
-  {{- if .IsHome }}
+    {{- $title = site.Title -}}
     {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{- $flex = "flex-column" -}}
+    {{- $summary = true -}}
   {{- end }}
   {{- $paginator := .Paginate $pages }}
 
+  <h1>{{ $title }}</h1>
+  {{ if .IsHome -}}
+    <h3>{{ site.Params.description }}</h3>
+  {{- end }}
 
   <ol class="index list-none no-padding">
-    {{- if .IsHome }}
-      {{- range $paginator.Pages }}
-        <li class="flex-column">
-          <time class="metadata" datetime="{{ .Date }}">
-            {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
-          </time>
-          <a href="{{ .Permalink | relURL }}">
-            {{- .Title -}}
-          </a>
+    {{- range $paginator.Pages }}
+      <li class="{{ $flex }}">
+        <time class="metadata" datetime="{{ .Date }}">
+          {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
+        </time>
+        <a href="{{ .Permalink | relURL }}">
+          {{- .Title -}}
+        </a>
+        {{ if $summary }}
           {{ .Summary }}
-        </li>
-      {{- end }}
-    {{- else }}
-      {{- range $paginator.Pages }}
-        <li>
-          <time class="metadata" datetime="{{ .Date }}">
-            {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
-          </time>
-          <a href="{{ .Permalink | relURL }}">
-            {{- .Title -}}
-          </a>
-        </li>
-      {{- end }}
+        {{ end }}
+      </li>
     {{- end }}
   </ol>
   {{ template "_internal/pagination.html" . }}
