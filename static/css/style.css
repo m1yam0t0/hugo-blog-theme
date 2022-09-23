@@ -1,7 +1,9 @@
 :root {
-  --backgroud-color: #ffffff;
+  --background-color: #ffffff;
   --meta-color: #909090;
   --border-color: #d0d0d0;
+  --hljs-background-color: #2e3440;
+  --hljs-color: #d8dee9;
 }
 
 * {
@@ -14,9 +16,15 @@ html {
 }
 
 body {
-  background-color: var(--backgroud-color);
+  background-color: var(--background-color);
   margin: auto;
   padding: 0;
+}
+
+code {
+  background-color: var(--hljs-background-color);
+  color: var(--hljs-color);
+  padding: 0 5px;
 }
 
 figure {
@@ -55,7 +63,7 @@ figure img {
 }
 
 .header, .footer {
-  background-color: var(--backgroud-color);
+  background-color: var(--background-color);
 }
 
 .header {
