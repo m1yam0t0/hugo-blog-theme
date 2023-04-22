@@ -6,10 +6,6 @@
   --hljs-color: #d8dee9;
 }
 
-* {
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
 html {
   max-width: 900px;
   margin: auto;
@@ -17,13 +13,16 @@ html {
 
 body {
   background-color: var(--background-color);
+  font-family: "Noto Sans JP", sans-serif;
   margin: auto;
   padding: 0;
 }
 
 code {
   background-color: var(--hljs-background-color);
+  border-radius: 3px;
   color: var(--hljs-color);
+  font-family: "Noto Sans Mono", monospace;
   padding: 0 5px;
 }
 
@@ -62,7 +61,7 @@ figure img {
   margin: 0 10px 0 10px;
 }
 
-.header, .footer {
+.header .footer {
   background-color: var(--background-color);
 }
 
