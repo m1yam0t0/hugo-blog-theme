@@ -25,13 +25,10 @@ code {
   padding: 0 5px;
 }
 
-figure {
-  text-align: center;
-}
-
-figure img {
+img {
   max-width: 100%;
   height: auto;
+  text-align: center;
 }
 
 .main {
@@ -60,7 +57,8 @@ figure img {
   margin: 0 10px 0 10px;
 }
 
-.header, .footer {
+.header,
+.footer {
   background-color: var(--background-color);
 }
 
