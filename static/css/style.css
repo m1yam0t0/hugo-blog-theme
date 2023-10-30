@@ -31,6 +31,33 @@ img {
   text-align: center;
 }
 
+table {
+  border-collapse: collapse;
+
+  & thead {
+    & th {
+      border-top: solid 1px;
+      border-bottom: solid 1px;
+      padding: 8px;
+    }
+
+    & th:not(:first-child) {
+      border-left: solid 1px;
+    }
+  }
+
+  & tbody {
+    & td {
+      border-bottom: dashed 1px;
+      padding: 5px 10px;
+    }
+
+    & td:not(:first-child) {
+      border-left: solid 1px;
+    }
+  }
+}
+
 .main {
   padding: 0px 20px;
 }
@@ -51,18 +78,14 @@ img {
 
 .terms {
   padding: 0;
-}
 
-.terms li {
-  margin: 0 10px 0 10px;
-}
-
-.header,
-.footer {
-  background-color: var(--background-color);
+  & li {
+    margin: 0 10px 0 10px;
+  }
 }
 
 .header {
+  background-color: var(--background-color);
   border-bottom: 1px solid;
   border-color: var(--border-color);
   line-height: 20px;
@@ -81,6 +104,7 @@ img {
 }
 
 .footer {
+  background-color: var(--background-color);
   border-top: 1px solid;
   border-color: var(--border-color);
   text-align: center;
