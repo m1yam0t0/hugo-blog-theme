@@ -1,11 +1,13 @@
 {{- define "main" }}
   <h1>{{ .Title }}</h1>
+
   {{- if not .Date.IsZero }}
     <div class="metadata">
       Date:
       {{ .Date | time.Format (default "2006/01/02" site.Params.DateFormat) }}
     </div>
   {{- end }}
+
   {{- if .Params.tags }}
     <div class="metadata">
       Tags:
@@ -14,5 +16,6 @@
       {{- end }}
     </div>
   {{- end }}
+
   {{ .Content }}
 {{- end }}

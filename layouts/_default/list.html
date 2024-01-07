@@ -11,10 +11,12 @@
   {{- end }}
   {{- $paginator := .Paginate $pages }}
 
+
   <h1>{{ $title }}</h1>
   {{ if .IsHome -}}
     <h3>{{ site.Params.description }}</h3>
   {{- end }}
+
 
   <ol class="index list-none no-padding">
     {{- range $paginator.Pages }}
@@ -22,14 +24,12 @@
         <time class="metadata" datetime="{{ .Date }}">
           {{- .Date | time.Format (default "2006/01/02" site.Params.DateFormat) -}}
         </time>
-        <a href="{{ .Permalink | relURL }}">
-          {{- .Title -}}
-        </a>
-        {{ if $summary }}
-          {{ .Summary }}
-        {{ end }}
+        <a href="{{ .Permalink | relURL }}"> {{- .Title -}} </a>
+        {{ if $summary }}{{ .Summary }}{{ end }}
       </li>
     {{- end }}
   </ol>
+
   {{ template "_internal/pagination.html" . }}
+
 {{- end }}
