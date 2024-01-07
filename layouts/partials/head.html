@@ -6,11 +6,17 @@
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
 <meta name="author" content="{{ site.Author.name }}" />
-{{- if hugo.IsProduction }}
+{{ if .IsHome -}}
+  <meta name="description" content="{{ site.Params.description }}" />
+{{ else -}}
+  <meta name="description" content="{{ default .Summary .Description }}" />
+{{ end -}}
+
+{{ if hugo.IsProduction -}}
   <meta name="robots" content="index, follow" />
-{{- else }}
+{{ else -}}
   <meta name="robots" content="noindex, nofollow" />
-{{- end }}
+{{ end -}}
 
 
 <link rel="stylesheet" href="/css/style.css" />
@@ -31,6 +37,6 @@
   hljs.highlightAll();
 </script>
 
-{{- if hugo.IsProduction }}
+{{ if hugo.IsProduction -}}
   {{ template "_internal/google_analytics.html" . }}
-{{- end }}
+{{ end -}}
